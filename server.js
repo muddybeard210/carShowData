@@ -5,12 +5,13 @@ const morgan = require('morgan');
 const debug = require('debug')('carShowData:server');
 
 //app modules
-
+const errorResponse = require('./lib/error-response');
 //globals
 const port = process.env.PORT || 3000;
 const app = express();
 //middleware
 app.use(morgan('dev'));
+app.use(errorResponse);
 //routes
 app.all('*', function(req, res){
   debug('404 *');
