@@ -1,4 +1,5 @@
 'use strict';
+
 //npm modules
 const express = require('express');
 const morgan = require('morgan');
@@ -8,6 +9,7 @@ const mongoose = require('mongoose');
 //app modules
 const errorResponse = require('./lib/error-response');
 const carRouter = require('./route/car-router');
+
 //globals
 const port = process.env.PORT || 3000;
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost/carShowData';
@@ -24,7 +26,7 @@ app.use(errorResponse);
 app.use('/api', carRouter);
 app.all('*', function(req, res){
   debug('404 *');
-  res.status(404).send('💩');
+  res.status(404).send('💩 not found');
 });
 
 //start server
