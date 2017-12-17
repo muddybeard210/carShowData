@@ -16,7 +16,9 @@ const mongoURI = process.env.MONGO_URI || 'mongodb://localhost/carShowData';
 const app = express();
 
 //connect to db
-mongoose.connect(mongoURI);
+mongoose.connect(mongoURI, {
+  useMongoClient: true,
+});
 
 //middleware
 app.use(morgan('dev'));
